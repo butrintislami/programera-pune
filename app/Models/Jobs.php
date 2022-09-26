@@ -9,6 +9,16 @@ class Jobs extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'tags',
+        'company',
+        'location',
+        'email',
+        'website',
+        'description'
+    ];
+
 public function scopeFilter($query, array $filters){
     if($filters['tag'] ?? false){
         $query->where('tags', 'like','%'.request('tag').'%');
@@ -22,6 +32,8 @@ public function scopeFilter($query, array $filters){
         ->orWhere('location', 'like','%'.request('search').'%');
     }
 }
+
+
 
 
 

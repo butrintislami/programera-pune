@@ -13,6 +13,8 @@
             referrerpolicy="no-referrer"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -26,6 +28,7 @@
     </script>
     <title>Pun per Programera</title>
 </head>
+<x-message></x-message>
 <body class="mb-48">
 <nav class="flex justify-between items-center mb-4">
     <a href="/"

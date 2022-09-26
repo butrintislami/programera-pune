@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Jobs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\Rule;
 
 class JobController extends Controller
 {
@@ -11,7 +13,7 @@ class JobController extends Controller
     public function index()
     {
         return view('jobs.index',[
-            'jobs'=>Jobs::latest()->filter(request(['tag','search']))->get()
+            'jobs'=>Jobs::latest()->filter(request(['tag','search']))->firstOrFail()->simplePaginate(5)
         ]);
 
     }
@@ -34,7 +36,19 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'title'=>'required|min:5|max:255|string',
+            'company'=>['required',Rule::unique('jobs','company')],
+            'tags'=> 'required|min:2',
+            'location'=>'required',
+            'email'=>'email|required',
+            'website'=>'required',
+            'description'=>'required|min:5'
+        ]);
+
+        $job= new Jobs($data);
+        $job->save();
+        return redirect()->route('jobs.index')->with('message','Shpallja u postua me sukses! ');
     }
 
     /**
