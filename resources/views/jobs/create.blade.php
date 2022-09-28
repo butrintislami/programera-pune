@@ -121,12 +121,13 @@
             <label for="logo" class="inline-block text-lg mb-2">
                 Logoja e Kompanise
             </label>
+{{--       --}}
             <input
                     type="file"
                     class="border border-gray-200 rounded p-2 w-full"
                     name="logo"
             />
-            @error('file')
+            @error('logo')
             <p class=" text-red-500 text-xs mt-1">{{$message}}</p>
             @enderror
         </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Jobs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class JobController extends Controller
@@ -13,7 +14,7 @@ class JobController extends Controller
     public function index()
     {
         return view('jobs.index',[
-            'jobs'=>Jobs::latest()->filter(request(['tag','search']))->firstOrFail()->simplePaginate(5)
+            'jobs'=>Jobs::latest()->filter(request(['tag','search']))->simplePaginate(6)
         ]);
 
     }
@@ -32,7 +33,7 @@ class JobController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -45,6 +46,13 @@ class JobController extends Controller
             'website'=>'required',
             'description'=>'required|min:5'
         ]);
+
+        if($request->hasFile('logo')){
+            $data['logo']=$request->file('logo')->store(
+                'images' );
+        }else{
+            $data['logo']='images/logo.png';
+        }
 
         $job= new Jobs($data);
         $job->save();
@@ -72,7 +80,8 @@ class JobController extends Controller
      */
     public function edit($id)
     {
-        //
+        $job = Jobs::where('id',$id)->firstOrFail();
+        return view('jobs.edit')->with(compact('job'));
     }
 
     /**
@@ -84,7 +93,32 @@ class JobController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title'=>'required|min:5|max:255|string',
+            'company'=>['required'],
+            'tags'=> 'required|min:2',
+            'location'=>'required',
+            'email'=>'email|required',
+            'website'=>'required',
+            'description'=>'required|min:5'
+        ]);
+        $job = Jobs::where('id',$id)->firstOrFail();
+        $data=$request->all();
+
+        $path='';
+        if($request->file('logo')!= null) {
+            $path= $request->file('logo')->store('images');
+            if($job->logo != 'images/no-image.png'){
+                Storage::delete(
+                    '/'.$job->logo);
+            }
+            $path=$job->logo;
+        }
+        $data['logo']=$path;
+
+        $job->update($data);
+        return redirect()->route('jobs.show',$job->id)->with('message','Shpallja u ndryshua me sukses! ');
+
     }
 
     /**

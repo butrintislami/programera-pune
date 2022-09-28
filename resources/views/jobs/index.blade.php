@@ -6,7 +6,7 @@
         @foreach($jobs as $job)
             <x-jobs-card :job="$job"></x-jobs-card>
         @endforeach
-        {{ $jobs->links() }}
     </div>
+    {{ $jobs->links() }}
 
 </x-layouts>
