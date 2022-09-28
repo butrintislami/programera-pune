@@ -46,6 +46,7 @@ class JobController extends Controller
             'website'=>'required',
             'description'=>'required|min:5'
         ]);
+        $data=$request->all();
 
         if($request->hasFile('logo')){
             $data['logo']=$request->file('logo')->store(
@@ -100,24 +101,26 @@ class JobController extends Controller
             'location'=>'required',
             'email'=>'email|required',
             'website'=>'required',
-            'description'=>'required|min:5'
+            'description'=>'required|min:5',
+            'image' => 'file|image|mimes:png,jpeg,jpg|dimensions:min_width=100,min_height=200'
         ]);
         $job = Jobs::where('id',$id)->firstOrFail();
         $data=$request->all();
 
-        $path='';
-        if($request->file('logo')!= null) {
+        $path='images/no-image.png';
+        if($request->file('logo') != null) {
             $path= $request->file('logo')->store('images');
+
             if($job->logo != 'images/no-image.png'){
                 Storage::delete(
                     '/'.$job->logo);
             }
-            $path=$job->logo;
+            $job->logo=$path;
         }
         $data['logo']=$path;
 
         $job->update($data);
-        return redirect()->route('jobs.show',$job->id)->with('message','Shpallja u ndryshua me sukses! ');
+        return redirect()->route('jobs.index')->with('message','Shpallja u ndryshua me sukses! ');
 
     }
 

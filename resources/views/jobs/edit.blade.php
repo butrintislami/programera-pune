@@ -5,7 +5,7 @@
       <p class="mb-4">Ndrysho: {{$job->title}}</p>
     </header>
 
-    <form method="POST" action="/listings/{{$job->id}}" enctype="multipart/form-data">
+    <form method="POST" action="/jobs/{{$job->id}}" enctype="multipart/form-data">
       @csrf
       @method('PUT')
       <div class="mb-6">
@@ -80,7 +80,7 @@
         <input type="file" class="border border-gray-200 rounded p-2 w-full" name="logo" />
         <img
                 class="w-48 mr-6 mb-6"
-                src="{{$job->logo? '/'.$job->logo : asset('images/no-image.png')}}"
+                src="{{$job->logo? asset('/'.$job->logo) : asset('images/no-image.png')}}"
                 alt=""
         />
 

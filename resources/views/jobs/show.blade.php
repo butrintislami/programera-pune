@@ -9,7 +9,9 @@
             >
                 <img
                         class="w-48 mr-6 mb-6"
-                        src="{{$job->logo? '/'.$job->logo : asset('images/no-image.png')}}"
+{{--                        src="{{$job->logo? '/'.$job->logo : asset('images/no-image.png')}}"--}}
+                            src="{{$job->logo? asset('/'.$job->logo) : asset('images/no-image.png')}}"
+
                         alt=""
                 />
 
