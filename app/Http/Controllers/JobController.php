@@ -108,7 +108,6 @@ class JobController extends Controller
         $data=$request->all();
 
         $path=$job->logo;
-//        aaaaaaaaaaaaaaaaaaaaaaaaa both
         if($request->file('logo') != null) {
             $path= $request->file('logo')->store('images');
 
