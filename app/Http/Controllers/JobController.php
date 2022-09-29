@@ -107,7 +107,7 @@ class JobController extends Controller
         $job = Jobs::where('id',$id)->firstOrFail();
         $data=$request->all();
 
-        $path='images/no-image.png';
+        $path=$job->logo;
         if($request->file('logo') != null) {
             $path= $request->file('logo')->store('images');
 
