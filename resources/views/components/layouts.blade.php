@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="{{asset('images/favicon.ico')}}" />
+    <link rel="icon" href="{{asset('images/owl.png')}}" />
     <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -32,7 +32,7 @@
 <body class="mb-48">
 <nav class="flex justify-between items-center mb-4">
     <a href="/"
-    ><img class="w-24" src="{{asset('images/logo.png')}}" alt="" class="logo"
+    ><img class="w-24" src="{{asset('images/owl.png')}}" alt="" class="logo"
         /></a>
     <ul class="flex space-x-6 mr-6 text-lg">
         <li>
