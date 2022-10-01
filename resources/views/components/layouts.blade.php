@@ -36,12 +36,12 @@
         /></a>
     <ul class="flex space-x-6 mr-6 text-lg">
         <li>
-            <a href="{{route('register')}}" class="hover:text-laravel"
+            <a href="{{route('users.create')}}" class="hover:text-laravel"
             ><i class="fa-solid fa-user-plus"></i> Regjistrohuni</a
             >
         </li>
         <li>
-            <a href="{{route('login')}}" class="hover:text-laravel"
+            <a href="" class="hover:text-laravel"
             ><i class="fa-solid fa-arrow-right-to-bracket"></i>
                 Login</a
             >
@@ -59,7 +59,7 @@
     <a
             href="{{route('jobs.create')}}"
             class="absolute top-1/3 right-10 bg-black text-white py-2 px-5"
-    >Post Job</a
+    >Postoni Pune</a
     >
 </footer>
 </body>
