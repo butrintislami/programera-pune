@@ -132,6 +132,12 @@ class JobController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $job=Jobs::where('id',$id)->firstOrFail();
+        $job->delete();
+        return redirect()->route('jobs.index')->with('message','Shpallja u fshi me sukses');
+    }
+
+    public function register(){
+        return view('auth.register');
     }
 }

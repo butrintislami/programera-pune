@@ -51,11 +51,18 @@
                 </div>
             </div>
         </x-card>
+
     <x-card class="mt-4 p-2 flex space-x-6">
-<a href="{{ route('jobs.edit', $job->id) }}" >
-    <i class="fa-solid fa-pencil"> </i> Edit
-</a>
+        <a href="{{ route('jobs.edit', $job->id) }}" >
+    <i class="fa-solid fa-pencil"></i> Edito shpalljen
+        </a>
+        <form method="POST" action="{{route('jobs.destroy',$job->id)}}}">
+        @csrf
+            @method('DELETE')
+            <button class="text-red-500"><i class="fa-solid fa-trash">Fshij Shpalljen</i></button>
+        </form>
     </x-card>
+
     </div>
     </x-layouts>
 
