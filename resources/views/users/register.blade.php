@@ -7,7 +7,7 @@
             <p class="mb-4">Regjistrohuni te postoni shpallje</p>
         </header>
 
-        <form method='POST' action="{{route('users.store')}}">
+       <form method="POST" action="{{ route('register') }}">
             @csrf
             <div class="mb-6">
                 <label for="name" class="inline-block text-lg mb-2">
@@ -66,6 +66,7 @@
                         type="password"
                         class="border border-gray-200 rounded p-2 w-full"
                         name="password_confirmation"
+                        required autocomplete="new-password"
                 />
                 @error('password_confirmation')
                 <p class="text-red-500 text-xs mt-1"></p>

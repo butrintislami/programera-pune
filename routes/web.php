@@ -33,7 +33,6 @@ Route::get('/layouts', function () {
 });
 
 Route::resource('/jobs',JobController::class);
-
 Route::resource('/users',UserController::class);
 
 Auth::routes();

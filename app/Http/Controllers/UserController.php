@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -34,8 +37,25 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => ['required', 'min:3'],
+            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'password' => 'required|confirmed|min:6'
+        ]);
+
+        // Hash Password
+        $data['password'] = Hash::make(($request->input('password')));
+
+        // Create User
+        $user = new User($data);
+
+        // Login
+        auth()->login($user);
+
+        return redirect('/')->with('message', 'Llogaria u krijua me sukses');
     }
+
+}
 
     /**
      * Display the specified resource.
