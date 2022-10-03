@@ -7,7 +7,7 @@
             <p class="mb-4">Regjistrohuni te postoni shpallje</p>
         </header>
 
-       <form method="POST" action="{{ route('register') }}">
+       <form method="POST" action="{{ route('users.store') }}">
             @csrf
             <div class="mb-6">
                 <label for="name" class="inline-block text-lg mb-2">
@@ -85,7 +85,7 @@
             <div class="mt-8">
                 <p>
                     Jeni te regjistruar? Kyquni
-                    <a href="{{route('login')}}" class="text-laravel"
+                    <a href="/" class="text-laravel"
                     >Kyquni</a
                     >
                 </p>

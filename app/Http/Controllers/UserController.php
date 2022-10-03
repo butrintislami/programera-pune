@@ -55,7 +55,7 @@ class UserController extends Controller
         return redirect('/')->with('message', 'Llogaria u krijua me sukses');
     }
 
-}
+
 
     /**
      * Display the specified resource.
