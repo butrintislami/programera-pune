@@ -35,12 +35,5 @@ Route::get('/layouts', function () {
 Route::resource('/jobs',JobController::class);
 Route::resource('/users',UserController::class);
 
-//Auth::routes();
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-////Single listings
-//Route::get('/puna/{id}', function($id){
-//    return view('puna',[
-//        'puna'=>jobs::find($id)
-//    ]);
-//});
+Route::post('/logout',[UserController::class,'logout'])->name('logout');
+Route::get('/login',[UserController::class,'login'])->name('login');

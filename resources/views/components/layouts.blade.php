@@ -35,11 +35,9 @@
     ><img class="w-24" src="{{asset('images/owl.png')}}" alt="" class="logo"
         /></a>
     <ul class="flex space-x-6 mr-6 text-lg">
-
+        @auth
         <li>
-            <a href="{{route('users.create')}}" class="hover:text-laravel"
-            ><i class="fa-solid fa-user-plus"></i> Regjistrohuni</a
-            >
+           <span class="font-bold uppercase"> Pershendetje {{auth()->user()->name}}</span>
         </li>
         <li>
             <a href="" class="hover:text-laravel"
@@ -47,8 +45,17 @@
                 Menagjo Publikimet</a
             >
         </li>
+            <li>
+                <form class="inline" method="POST" action="{{route('logout')}}">
+                @csrf
+                    <button type="submit">
+                        <i class="fa-solid fa-door-closed"></i>
+                        Logout
+                    </button>
+                </form>
 
-
+            </li>
+        @else
 {{-------------------------------------------------------------------------------------------------------}}
 
         <li>
@@ -62,7 +69,7 @@
                 Login</a
             >
         </li>
-
+        @endauth
     </ul>
 </nav>
 <main>

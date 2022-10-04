@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
@@ -42,12 +43,15 @@ class UserController extends Controller
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => 'required|confirmed|min:6'
         ]);
+        $data=$request->all();
 
-        // Hash Password
+//        Hash Password
         $data['password'] = Hash::make(($request->input('password')));
 
         // Create User
-        $user = new User($data);
+
+        $user=new User($data);
+        $user->save();
 
         // Login
         auth()->login($user);
@@ -100,5 +104,17 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function logout(Request $request){
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+        return redirect('/')->with('message', 'Ju jeni shkyqur nga llogaria juaj');
+    }
+
+    public function login(){
+        return view('users.login');
     }
 }
