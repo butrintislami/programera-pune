@@ -26,12 +26,13 @@
 
             <div class="mb-6">
                 <label for="email" class="inline-block text-lg mb-2"
-                >Emaila</label
+                >Email</label
                 >
                 <input
                         type="email"
                         class="border border-gray-200 rounded p-2 w-full"
                         name="email"
+                        value="{{old('email')}}"
                 />
                 @error('email')
                 <p class="text-red-500 text-xs mt-1"></p>
@@ -84,8 +85,8 @@
 
             <div class="mt-8">
                 <p>
-                    Jeni te regjistruar? Kyquni
-                    <a href="/" class="text-laravel"
+                    Jeni te regjistruar?
+                    <a href="{{route('login')}}" class="text-laravel"
                     >Kyquni</a
                     >
                 </p>
