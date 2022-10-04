@@ -7,7 +7,7 @@
             <p class="mb-4">Kyquni te postoni dhe editoni shpallje</p>
         </header>
 
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('authenticate') }}">
             @csrf
 
             <div class="mb-6">
@@ -20,7 +20,7 @@
                         name="email"
                 />
                 @error('email')
-                <p class="text-red-500 text-xs mt-1"></p>
+                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                 @enderror
             </div>
 
@@ -37,7 +37,7 @@
                         name="password"
                 />
                 @error('password')
-                <p class="text-red-500 text-xs mt-1"></p>
+                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                 @enderror
             </div>
 

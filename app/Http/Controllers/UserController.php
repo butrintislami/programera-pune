@@ -14,7 +14,11 @@ class UserController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
      */
+
+
+
     public function index()
     {
     }
@@ -116,5 +120,19 @@ class UserController extends Controller
 
     public function login(){
         return view('users.login');
+    }
+
+    public function authenticate(Request $request){
+        $data=$request->validate([
+            'email' => ['required', 'email'],
+            'password' => 'required'
+        ]);
+
+        if(auth()->attempt($data)){
+            $request->session()->regenerate();
+            return redirect('/')->with('message','Kyqja ishte e suksesshme');
+        }
+            return back()->withErrors(['email'=>'Detajet nuk jane te sakta'])->onlyInput('email');
+
     }
 }

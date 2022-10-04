@@ -37,3 +37,4 @@ Route::resource('/users',UserController::class);
 
 Route::post('/logout',[UserController::class,'logout'])->name('logout');
 Route::get('/login',[UserController::class,'login'])->name('login');
+Route::post('/user/authenticate',[UserController::class,'authenticate'])->name('authenticate');

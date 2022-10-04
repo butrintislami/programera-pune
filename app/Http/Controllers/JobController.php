@@ -11,6 +11,13 @@ use Illuminate\Validation\Rule;
 class JobController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['create','store','edit','update','delete']);
+    }
+
+
+
     public function index()
     {
         return view('jobs.index',[
