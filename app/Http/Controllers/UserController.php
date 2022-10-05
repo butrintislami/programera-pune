@@ -17,7 +17,11 @@ class UserController extends Controller
      *
      */
 
-
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['edit','update','destroy','logout']);
+        $this->middleware('guest')->only('create','login');
+    }
 
     public function index()
     {
