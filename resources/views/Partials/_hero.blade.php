@@ -15,11 +15,19 @@
             Gjeni apo postoni pune/projekte per programera
         </p>
         <div>
-            <a
-                    href="{{route('users.create')}}"
-                    class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
-            >Regjistrohuni te postoni oferta</a
-            >
+            @auth
+                <a
+                        href="{{route('jobs.create')}}"
+                        class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
+                >Postoni nje shpallje pune</a
+                >
+            @else
+                <a
+                        href="{{route('users.create')}}"
+                        class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
+                >Regjistrohuni te postoni oferta</a
+                >
+            @endauth
         </div>
     </div>
 </section>

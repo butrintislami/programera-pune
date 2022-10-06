@@ -40,7 +40,7 @@
            <span class="font-bold uppercase"> Pershendetje {{auth()->user()->name}}</span>
         </li>
         <li>
-            <a href="" class="hover:text-laravel"
+            <a href="{{route('manage')}}" class="hover:text-laravel"
             ><i class="fa-solid fa-gear"></i>
                 Menagjo Publikimet</a
             >

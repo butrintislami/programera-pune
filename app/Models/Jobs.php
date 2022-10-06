@@ -11,6 +11,7 @@ class Jobs extends Model
 
     protected $fillable = [
         'title',
+        'user_id',
         'tags',
         'company',
         'location',
@@ -35,7 +36,9 @@ public function scopeFilter($query, array $filters){
 }
 
 
-
+public function user(){
+    return $this->belongsTo(User::class,'user_id');
+}
 
 
 

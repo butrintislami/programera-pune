@@ -61,6 +61,7 @@ class JobController extends Controller
         }else{
             $data['logo']='images/logo.png';
         }
+        $data['user_id']=auth()->id();
 
         $job= new Jobs($data);
         $job->save();
@@ -146,5 +147,9 @@ class JobController extends Controller
 
     public function register(){
         return view('auth.register');
+    }
+
+    public function manage(){
+        return view('jobs.manage',['jobs'=>auth()->user()->jobs()->get()]);
     }
 }

@@ -35,6 +35,10 @@ Route::get('/layouts', function () {
 Route::resource('/jobs',JobController::class);
 Route::resource('/users',UserController::class);
 
+
+Route::get('/jobs/manage',[JobController::class,'manage'])->middleware('auth')->name('manage');
+
+
 Route::post('/logout',[UserController::class,'logout'])->name('logout');
 Route::get('/login',[UserController::class,'login'])->name('login');
 Route::post('/user/authenticate',[UserController::class,'authenticate'])->name('authenticate');
