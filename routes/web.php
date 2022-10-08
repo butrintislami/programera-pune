@@ -36,7 +36,7 @@ Route::resource('/jobs',JobController::class);
 Route::resource('/users',UserController::class);
 
 
-Route::get('/jobs/manage',[JobController::class,'manage'])->middleware('auth')->name('manage');
+Route::get('/manage',[JobController::class,'manage'])->name('manage')->middleware('auth');
 
 
 Route::post('/logout',[UserController::class,'logout'])->name('logout');
