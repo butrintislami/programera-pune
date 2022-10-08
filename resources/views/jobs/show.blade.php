@@ -26,7 +26,7 @@
                 <div class="border border-gray-200 w-full mb-6"></div>
                 <div>
                     <h3 class="text-3xl font-bold mb-4">
-                        Job Description
+                        Pershkrimi i Punes
                     </h3>
                     <div class="text-lg space-y-6">
                         <p>
@@ -37,15 +37,14 @@
                                 href="mailto:{{$job->email}}"
                                 class="block bg-laravel text-white mt-6 py-2 rounded-xl hover:opacity-80"
                         ><i class="fa-solid fa-envelope"></i>
-                            Contact Employer</a
+                            Kontakto Punedhenesin</a
                         >
 
                         <a
                                 href="{{$job->website}}"
                                 target="_blank"
                                 class="block bg-black text-white py-2 rounded-xl hover:opacity-80"
-                        ><i class="fa-solid fa-globe"></i> Visit
-                            Website</a
+                        ><i class="fa-solid fa-globe"></i> Vizitoni Webfaqen</a
                         >
                     </div>
                 </div>
