@@ -17,26 +17,26 @@
                 <td
                         class="px-4 py-8 border-t border-b border-gray-300 text-lg"
                 >
-                    <a href="show.html">
-                        Laravel Senior Developer
+                    <a href="{{route('jobs.show',[$job->id])}}">
+                        {{$job->title}}
                     </a>
                 </td>
                 <td
                         class="px-4 py-8 border-t border-b border-gray-300 text-lg"
                 >
                     <a
-                            href="edit.html"
                             class="text-blue-400 px-6 py-2 rounded-xl"
+                            href="{{route('jobs.edit',[$job->id])}}"
                     ><i
                                 class="fa-solid fa-pen-to-square"
                         ></i>
-                        Edit</a
+                        Edito</a
                     >
                 </td>
                 <td
                         class="px-4 py-8 border-t border-b border-gray-300 text-lg"
                 >
-                    <form action="">
+                    <form action="{{route('jobs.destroy',[$job->id])}}">
                         <button class="text-red-600">
                             <i
                                     class="fa-solid fa-trash-can"

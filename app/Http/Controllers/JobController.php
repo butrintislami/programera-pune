@@ -90,8 +90,12 @@ class JobController extends Controller
     public function edit($id)
     {
         $job = Jobs::where('id',$id)->firstOrFail();
+        if($job->user_id != auth()->id()){
+            abort('403','Nuk keni akses');
+        }else{
         return view('jobs.edit')->with(compact('job'));
-    }
+        }
+        }
 
     /**
      * Update the specified resource in storage.
@@ -102,6 +106,7 @@ class JobController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $request->validate([
             'title'=>'required|min:5|max:255|string',
             'company'=>['required'],

@@ -5,7 +5,7 @@
       <p class="mb-4">Ndrysho: {{$job->title}}</p>
     </header>
 
-    <form method="POST" action="/jobs/{{$job->id}}" enctype="multipart/form-data">
+    <form method="POST" action="{{route('jobs.update',[$job->id])}}" enctype="multipart/form-data">
       @csrf
       @method('PUT')
       <div class="mb-6">
