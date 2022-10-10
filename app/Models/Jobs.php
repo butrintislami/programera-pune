@@ -21,7 +21,11 @@ class Jobs extends Model
         'logo'
     ];
 
-public function scopeFilter($query, array $filters){
+    public static function orderBy(string $string, string $string1)
+    {
+    }
+
+    public function scopeFilter($query, array $filters){
     if($filters['tag'] ?? false){
         $query->where('tags', 'like','%'.request('tag').'%');
     }

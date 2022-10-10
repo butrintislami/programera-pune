@@ -22,15 +22,8 @@ use App\Models\Jobs;
 Route::get('/',[JobController::class, 'index']);
 
 
-//veq ni pun
-Route::get('/puna/{job}', [JobController::class, 'show']);
+Route::get('/admin/manage',[JobController::class,'admin'])->middleware('is_admin')->name('admin/manage');
 
-
-
-
-Route::get('/layouts', function () {
-    return view('layouts');
-});
 
 Route::resource('/jobs',JobController::class);
 Route::resource('/users',UserController::class);

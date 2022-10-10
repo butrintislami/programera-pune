@@ -42,9 +42,15 @@
         <li>
             <a href="{{route('manage')}}" class="hover:text-laravel"
             ><i class="fa-solid fa-gear"></i>
-                Menagjo Publikimet</a
-            >
+                Menagjo Publikimet</a>
         </li>
+        @if(auth()->user()->role === 'admin')
+                <li>
+                    <a href="{{route('admin/manage')}}" class="hover:text-laravel"
+                    ><i class="fa-solid fa-gear"></i>
+                        Menagjo te gjitha Publikimet</a>
+                </li>
+            @endif
             <li>
                 <form class="inline" method="POST" action="{{route('logout')}}">
                 @csrf
