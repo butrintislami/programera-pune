@@ -126,11 +126,24 @@ class JobController extends Controller
     }
 
 
+//    public function destroy($id)
+//    {
+//        $user=User::all();
+//        $job=Jobs::where('id',$id)->firstOrFail();
+//
+//        if($job->user_id = auth()->id() OR $user->role='admin'){
+//        $job->delete();
+//        return redirect()->route('jobs.index')->with('message','Shpallja u fshi me sukses');
+//        }else{
+//            return redirect()->route('jobs.index');
+//        }
+//    }
     public function destroy($id)
     {
-        $job=Jobs::where('id',$id)->firstOrFail();
-        $job->delete();
-        return redirect()->route('jobs.index')->with('message','Shpallja u fshi me sukses');
+            $job=Jobs::where('id',$id)->firstOrFail();
+            $job->delete();
+            return redirect()->route('jobs.index')->with('message','Shpallja u fshi me sukses');
+
     }
 
     public function register(){
