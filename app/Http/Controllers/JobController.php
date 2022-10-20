@@ -67,15 +67,29 @@ class JobController extends Controller
         ]);
     }
 
+//    public function edit($id)
+//    {
+//        $user=User::all();
+//        $job = Jobs::where('id',$id)->firstOrFail();
+//
+//        if($job->user_id != auth()->id() ){
+//            abort('403','Nuk keni akses');
+//        }else{
+//        return view('jobs.edit')->with(compact('job'));
+//        }
+//        }
+
     public function edit($id)
     {
+        $user=User::all();
         $job = Jobs::where('id',$id)->firstOrFail();
-        if($job->user_id != auth()->id()){
-            abort('403','Nuk keni akses');
+
+        if($job->user_id = auth()->id() OR $user->role='admin'){
+            return view('jobs.edit')->with(compact('job'));
         }else{
-        return view('jobs.edit')->with(compact('job'));
+            abort('403','Nuk keni akses');
         }
-        }
+    }
 
 
     public function update(Request $request, $id)
