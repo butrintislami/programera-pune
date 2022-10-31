@@ -9,7 +9,7 @@
         />
         <div>
             <h3 class="text-2xl">
-                <a href="/puna/{{$job->id}}">{{$job->title}}</a>
+                <a href="/jobs/{{$job->id}}">{{$job->title}}</a>
             </h3>
             <div class="text-xl font-bold mb-4">{{$job->company}}</div>
             <x-job-tags :tagsCsv="$job->tags"></x-job-tags>

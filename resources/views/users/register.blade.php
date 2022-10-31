@@ -10,6 +10,12 @@
        <form method="POST" action="{{ route('users.store') }}">
             @csrf
             <div class="mb-6">
+                <input
+                        type="hidden"
+                        class="border border-gray-200 rounded p-2 w-full"
+                        name="role"
+                        value="guest"
+                />
                 <label for="name" class="inline-block text-lg mb-2">
                     Emri
                 </label>
