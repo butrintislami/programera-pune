@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Jobs;
 use App\Models\User;
@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Jobs::factory(14)->create();
         User::factory(10)->create();
         User::factory()->create([
              'name' => 'Butrint',
@@ -29,6 +28,7 @@ class DatabaseSeeder extends Seeder
              'password' => Hash::make(('butrinti')),
              'remember_token' => Str::random(10),
         ]);
+        Jobs::factory(14)->create();
 
 
     }
